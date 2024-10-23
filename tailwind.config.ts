@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        customGreen: '#C6F26B', // Adding the custom hex color
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
