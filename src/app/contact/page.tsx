@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <div className="contact py-16" id="contact">
+    <div className="contact py-16">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row">
           {/* Left Section */}

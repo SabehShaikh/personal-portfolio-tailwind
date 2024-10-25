@@ -10,10 +10,7 @@ export default function About() {
   };
 
   return (
-    <div
-      className="flex flex-col md:flex-row items-center justify-between p-8"
-      id="about"
-    >
+    <div className="flex flex-col md:flex-row items-center justify-between p-8">
       <div className="about-col-1 md:w-1/2 mb-8 md:mb-0 md:mr-8 flex justify-center">
         <Image
           src="/images/mypic.jpg"

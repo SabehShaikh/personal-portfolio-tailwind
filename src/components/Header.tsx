@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,8 +13,8 @@ export default function Header() {
   };
 
   return (
-    <div className="tab-links bg-[#309d61] p-4 w-full">
-      <nav className="flex justify-between items-center px-10">
+    <div className="tab-links bg-[#309d61] p-3 w-full">
+      <nav className="flex justify-between items-center px-5 md:px-10">
         {/* Logo on the left */}
         <div className="flex-shrink-0">
           <Image
@@ -30,57 +31,52 @@ export default function Header() {
             className="text-white focus:outline-none"
           >
             {isOpen ? (
-              <FaTimes className="w-6 h-6" /> // Close icon when menu is open
+              <FaTimes className="w-6 h-6" /> // Close icon
             ) : (
-              <FaBars className="w-6 h-6" /> // Hamburger icon when menu is closed
+              <FaBars className="w-6 h-6" /> // Open icon
             )}
           </button>
         </div>
 
+        {/* Sliding menu */}
         <div
-          className={`${
-            isOpen ? "flex" : "hidden"
-          } md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-[#309d61] md:bg-transparent p-4 md:p-0 transition-all duration-300`}
+          className={`fixed top-0 right-0 h-full w-[40%] bg-[#309d61] p-8 transition-transform duration-300 transform ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          } md:translate-x-0 md:static md:w-auto md:p-0 md:flex md:space-x-8 z-10`}
         >
-          <ul className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-            <li className="relative">
-              <Link href="/" className="tab-links  transition duration-300">
+          <div className="absolute top-4 right-4 md:hidden">
+            <button onClick={toggleMenu} className="text-white">
+              <FaTimes className="w-5 h-5" />
+              {/* Close button inside the menu */}
+            </button>
+          </div>
+          <ul className="flex flex-col font-bold text-sm md:text-base md:font-normal text md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+            <li>
+              <Link href="/" className="transition duration-300">
                 Home
                 <span></span>
-              </Link>
+              </Link> 
             </li>
-            <li className="relative">
-              <Link
-                href="/about"
-                className="tab-links  transition duration-300"
-              >
+            <li>
+              <Link href="/about" className="transition duration-300">
                 About
                 <span></span>
               </Link>
             </li>
-            <li className="relative">
-              <Link
-                href="/services"
-                className="tab-links  transition duration-300"
-              >
+            <li>
+              <Link href="/services" className="transition duration-300">
                 Services
                 <span></span>
               </Link>
             </li>
-            <li className="relative">
-              <Link
-                href="/portfolio"
-                className="tab-links  transition duration-300"
-              >
+            <li>
+              <Link href="/portfolio" className="transition duration-300">
                 Portfolio
                 <span></span>
               </Link>
             </li>
-            <li className="relative">
-              <Link
-                href="/contact"
-                className="tab-links transition duration-300"
-              >
+            <li>
+              <Link href="/contact" className="transition duration-300">
                 Contact
                 <span></span>
               </Link>
