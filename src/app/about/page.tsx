@@ -14,8 +14,6 @@ export default function About() {
       className="flex flex-col md:flex-row items-center justify-between p-8"
       id="about"
     >
-      {/* Image Section */}
-
       <div className="about-col-1 md:w-1/2 mb-8 md:mb-0 md:mr-8 flex justify-center">
         <Image
           src="/images/mypic.jpg"
@@ -26,7 +24,6 @@ export default function About() {
         />
       </div>
 
-      {/* Text Section */}
       <div className="about-col-2 md:w-1/2 text-center md:text-left">
         <h1 className="text-3xl font-bold mb-6">About Me</h1>
         <p className="mb-8 max-w-2xl mx-auto md:mx-0">
@@ -41,33 +38,34 @@ export default function About() {
           stay ahead in the ever-evolving tech landscape.
         </p>
 
-        {/* Tab Navigation */}
         <div className="tab-titles flex space-x-8 relative justify-center md:justify-start">
           <p
-            className={`tab-links relative cursor-pointer transition duration-500 ${activeTab === "skills" ? "active-link text-customGreen" : ""
-              }`}
+            className={`tab-links relative cursor-pointer transition duration-500 ${
+              activeTab === "skills" ? "active-link text-customGreen" : ""
+            }`}
             onClick={() => opentab("skills")}
           >
             Skills
           </p>
 
           <p
-            className={`tab-links relative cursor-pointer transition duration-500 ${activeTab === "experience" ? "active-link text-customGreen" : ""
-              }`}
+            className={`tab-links relative cursor-pointer transition duration-500 ${
+              activeTab === "experience" ? "active-link text-customGreen" : ""
+            }`}
             onClick={() => opentab("experience")}
           >
             Experience
           </p>
           <p
-            className={`tab-links relative cursor-pointer transition duration-500 ${activeTab === "education" ? "active-link text-customGreen" : ""
-              }`}
+            className={`tab-links relative cursor-pointer transition duration-500 ${
+              activeTab === "education" ? "active-link text-customGreen" : ""
+            }`}
             onClick={() => opentab("education")}
           >
             Education
           </p>
         </div>
 
-        {/* Tab Content */}
         <div className="tab-contents">
           {activeTab === "skills" && (
             <div id="skills" className="active-tab">

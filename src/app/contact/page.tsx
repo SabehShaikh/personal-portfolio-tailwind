@@ -1,9 +1,7 @@
-// components/Contact.tsx
-
 import React from "react";
 import {
   FaPaperPlane,
-  FaHeart,
+  // FaHeart,
   FaFacebookF,
   FaLinkedinIn,
   FaGithub,
@@ -56,7 +54,7 @@ export default function Contact() {
           </div>
 
           {/* Right Section */}
-          <div className="contact-right flex-1">
+          <div className="flex-1">
             <form name="submit-to-google-sheet" className="mt-4">
               <input
                 type="text"
@@ -98,5 +96,3 @@ export default function Contact() {
     </div>
   );
 }
-
-

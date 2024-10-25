@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa"; // Importing icons from react-icons
-
-const Header = () => {
+import { FaBars, FaTimes } from "react-icons/fa";
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-gray-800 p-4 w-full">
+    <div className="tab-links bg-[#309d61] p-4 w-full">
       <nav className="flex justify-between items-center px-10">
         {/* Logo on the left */}
         <div className="flex-shrink-0">
@@ -25,7 +24,6 @@ const Header = () => {
           />
         </div>
 
-        {/* Hamburger menu button (for mobile) */}
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
@@ -39,51 +37,52 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Links for both desktop and mobile */}
         <div
           className={`${
             isOpen ? "flex" : "hidden"
-          } md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent p-4 md:p-0 transition-all duration-300`}
+          } md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-[#309d61] md:bg-transparent p-4 md:p-0 transition-all duration-300`}
         >
           <ul className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-            <li>
-              <Link
-                href="/"
-                className="hover:text-green-300 transition duration-300"
-              >
+            <li className="relative">
+              <Link href="/" className="tab-links  transition duration-300">
                 Home
+                <span></span>
               </Link>
             </li>
-            <li>
+            <li className="relative">
               <Link
                 href="/about"
-                className="hover:text-green-300 transition duration-300"
+                className="tab-links  transition duration-300"
               >
                 About
+                <span></span>
               </Link>
             </li>
-            <li>
+            <li className="relative">
               <Link
                 href="/services"
-                className="hover:text-green-300 transition duration-300"
+                className="tab-links  transition duration-300"
               >
                 Services
+                <span></span>
               </Link>
             </li>
-            <li>
+            <li className="relative">
               <Link
                 href="/portfolio"
-                className="hover:text-green-300 transition duration-300"
+                className="tab-links  transition duration-300"
               >
                 Portfolio
+                <span></span>
               </Link>
             </li>
-            <li>
+            <li className="relative">
               <Link
                 href="/contact"
-                className="hover:text-green-300 transition duration-300"
+                className="tab-links transition duration-300"
               >
                 Contact
+                <span></span>
               </Link>
             </li>
           </ul>
@@ -91,6 +90,4 @@ const Header = () => {
       </nav>
     </div>
   );
-};
-
-export default Header;
+}
