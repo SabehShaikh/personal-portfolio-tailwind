@@ -1,163 +1,172 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { 
+  Code, 
+  Briefcase, 
+  GraduationCap, 
+  Award, 
+  CheckCircle2 
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState("skills");
 
-  const opentab = (tabName: string) => {
-    setActiveTab(tabName);
+  const tabData = {
+    skills: [
+      { 
+        icon: <Code className="text-primary mr-2" />, 
+        title: "UI/UX", 
+        description: "Designing Web/App interfaces" 
+      },
+      { 
+        icon: <CheckCircle2 className="text-primary mr-2" />, 
+        title: "Front-End Development", 
+        description: "Web/App Development" 
+      },
+      { 
+        icon: <Award className="text-primary mr-2" />, 
+        title: "Responsive Web Design", 
+        description: "Creating mobile-friendly websites" 
+      }
+    ],
+    experience: [
+      {
+        title: "Web Developer Intern",
+        company: "Saylani Mass IT Training",
+        period: "Aug 2023 - Dec 2023"
+      },
+      {
+        title: "Remote Web/App Developer Intern",
+        company: "CodeSoft",
+        period: "Sept - Oct 2023"
+      },
+      {
+        title: "Remote Web Developer Intern",
+        company: "TechnoHacks",
+        period: "Oct 2023"
+      }
+    ],
+    education: [
+      {
+        title: "Bachelor of Computer Science (BSCS)",
+        institution: "Federal Urdu University",
+        period: "2023 - Present"
+      },
+      {
+        title: "Generative AI Engineer",
+        institution: "Governor Sindh Initiative",
+        period: "Feb 2024 - Present"
+      },
+      {
+        title: "MERN Stack Web Development",
+        institution: "Saylani Mass IT Training",
+        period: "Jan 2023 - Dec 2023"
+      }
+    ]
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between p-8">
-      <div className="about-col-1 md:w-1/2 mb-8 md:mb-0 md:mr-8 flex justify-center">
-        <Image
-          src="/images/mypic.jpg"
-          alt="My Picture"
-          width={345}
-          height={345}
-          className="rounded-full object-cover w-3/4 sm:w-1/2 md:w-1/3"
-        />
-      </div>
-
-      <div className="about-col-2 md:w-1/2 text-center md:text-left">
-        <h1 className="text-3xl font-bold mb-6">About Me</h1>
-        <p className="mb-8 max-w-2xl mx-auto md:mx-0">
-          I'm a dedicated MERN Stack Developer, driven by the passion to create
-          user-centric and visually captivating websites. My core skills include
-          HTML, CSS, and JavaScript, with a strong focus on enhancing user
-          experiences. Currently, I'm mastering React JS for dynamic and
-          interactive interfaces. I'm also actively expanding my expertise in
-          full-stack development, exploring Node.js to build efficient web
-          applications. In addition to my development pursuits, I'm currently
-          delving into Generative AI and TypeScript to broaden my skill set and
-          stay ahead in the ever-evolving tech landscape.
-        </p>
-
-        <div className="tab-titles flex space-x-8 relative justify-center md:justify-start">
-          <p
-            className={`tab-links relative cursor-pointer transition duration-500 ${
-              activeTab === "skills" ? "active-link text-customGreen" : ""
-            }`}
-            onClick={() => opentab("skills")}
-          >
-            Skills
-          </p>
-
-          <p
-            className={`tab-links relative cursor-pointer transition duration-500 ${
-              activeTab === "experience" ? "active-link text-customGreen" : ""
-            }`}
-            onClick={() => opentab("experience")}
-          >
-            Experience
-          </p>
-          <p
-            className={`tab-links relative cursor-pointer transition duration-500 ${
-              activeTab === "education" ? "active-link text-customGreen" : ""
-            }`}
-            onClick={() => opentab("education")}
-          >
-            Education
-          </p>
+    <div className="container mx-auto px-4 py-12 max-w-6xl">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Profile Image */}
+        <div className="flex justify-center md:justify-start">
+          <Image
+            src="/images/mypic.jpg"
+            alt="Sabeh Shaikh"
+            width={400}
+            height={400}
+            className="rounded-full object-cover w-64 h-64 md:w-80 md:h-80 shadow-lg"
+          />
         </div>
 
-        <div className="tab-contents">
-          {activeTab === "skills" && (
-            <div id="skills" className="active-tab">
-              <ul className="list-none pl-8 mt-6">
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">UI/UX</span>
-                  <br /> Designing Web/App interfaces
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Front-End Development
-                  </span>
-                  <br /> Web/App Development
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Responsive Web Design
-                  </span>
-                  <br /> Creating mobile-friendly websites
-                </li>
-              </ul>
-            </div>
-          )}
+        {/* About Content */}
+        <div>
+          <h1 className="text-4xl text-center md:text-left font-bold mb-6">About Me</h1>
+          <p className="text-muted-foreground mb-8">
+            Dedicated MERN Stack Developer passionate about creating user-centric 
+            and visually captivating websites. Proficient in HTML, CSS, and JavaScript, 
+            with a strong focus on React JS and full-stack development. Currently 
+            expanding expertise in Generative AI and TypeScript.
+          </p>
 
-          {activeTab === "experience" && (
-            <div id="experience" className="active-tab">
-              <ul className="list-none pl-8 mt-6">
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Web Developer Intern
-                  </span>
-                  <br /> Saylani Mass IT Training
-                  <span className="text-customGreen">
-                    {" "}
-                    (August 2023 - Dec 2023)
-                  </span>
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Remote Web/App Developer Intern
-                  </span>
-                  <br /> CodeSoft
-                  <span className="text-customGreen">
-                    {" "}
-                    (Sept 20 - Oct 20, 2023)
-                  </span>
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Remote Web Developer Intern
-                  </span>
-                  <br /> TechnoHacks
-                  <span className="text-customGreen">
-                    {" "}
-                    (Oct 1 - Oct 30, 2023)
-                  </span>
-                </li>
-              </ul>
-            </div>
-          )}
+          <Tabs 
+            defaultValue="skills" 
+            className="w-full"
+            onValueChange={setActiveTab}
+          >
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="skills">Skills</TabsTrigger>
+              <TabsTrigger value="experience">Experience</TabsTrigger>
+              <TabsTrigger value="education">Education</TabsTrigger>
+            </TabsList>
 
-          {activeTab === "education" && (
-            <div id="education" className="active-tab">
-              <ul className="list-none pl-8 mt-6">
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Federal Urdu University of Arts, Sciences & Technology
-                  </span>
-                  <br /> Bachelor of Computer Science (BSCS)
-                  <span className="text-customGreen"> (2023 - Present)</span>
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Governor Sindh Initiative For AI, WEB 3.0 & Metaverse
-                  </span>
-                  <br /> Generative AI Engineer
-                  <span className="text-customGreen">(2024 - Present)</span>
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Saylani Mass IT Training
-                  </span>
-                  <br /> MERN Stack Web Development
-                  <span className="text-customGreen">(2022 - 2023)</span>
-                </li>
-                <li className="mb-4">
-                  <span className="font-bold text-customGreen">
-                    Fazaia Degree College Faisal
-                  </span>
-                  <br /> Pre-Engineering
-                  <span className="text-customGreen">(2020 - 2022)</span>
-                </li>
-              </ul>
-            </div>
-          )}
+            <TabsContent value="skills">
+              <div className="grid md:grid-cols-2 gap-4">
+                {tabData.skills.map((skill, index) => (
+                  <Card key={index} className="hover:shadow-lg transition-all">
+                    <CardHeader className="flex flex-row items-center space-x-4">
+                      {skill.icon}
+                      <CardTitle>{skill.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{skill.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="experience">
+              {tabData.experience.map((exp, index) => (
+                <Card key={index} className="mb-4 hover:shadow-lg transition-all">
+                  <CardHeader>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <CardTitle>{exp.title}</CardTitle>
+                        <p className="text-muted-foreground">{exp.company}</p>
+                      </div>
+                      <Briefcase className="text-primary" />
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{exp.period}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </TabsContent>
+
+            <TabsContent value="education">
+              {tabData.education.map((edu, index) => (
+                <Card key={index} className="mb-4 hover:shadow-lg transition-all">
+                  <CardHeader>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <CardTitle>{edu.title}</CardTitle>
+                        <p className="text-muted-foreground">{edu.institution}</p>
+                      </div>
+                      <GraduationCap className="text-primary" />
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{edu.period}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </TabsContent>
+          </Tabs>
+
+          <div className="mt-8 flex space-x-4">
+            <Button>
+              <a href="/images/SabehShaikhUpdatedResume.pdf" target="_blank">Download Resume</a>
+            </Button>
+            <Button variant="outline">
+              <a href="/contact">Contact Me</a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

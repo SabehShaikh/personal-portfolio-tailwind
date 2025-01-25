@@ -1,73 +1,92 @@
 import React from "react";
-import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Code, Database, Server, Github, Linkedin, Mail } from "lucide-react";
 
-export default function Home() {
+type SkillCardProps = {
+  icon: React.ElementType;
+  title: string;
+  skills: string[];
+};
+
+const SkillCard: React.FC<SkillCardProps> = ({ icon: Icon, title, skills }) => (
+  <Card className="w-full hover:shadow-lg transition-all duration-300">
+    <CardHeader>
+      <div className="flex items-center space-x-3">
+        <Icon className="text-primary w-8 h-8" />
+        <CardTitle>{title}</CardTitle>
+      </div>
+    </CardHeader>
+    <CardContent>
+      <ul className="space-y-2 text-sm">
+        {skills.map((skill, index) => (
+          <li key={index} className="flex items-center">
+            <span className="mr-2 text-primary">•</span>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </CardContent>
+  </Card>
+);
+
+const HomePage = () => {
+  const skills = {
+    frontend: ["React.js", "Next.js", "Tailwind CSS", "TypeScript"],
+    backend: ["Node.js", "Express", "MongoDB", "Firebase"],
+    tools: ["Git", "Vercel", "Netlify", "Postman"],
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 space-y-12">
+    <div className="container mx-auto px-4 py-12 space-y-12">
       {/* Header Section */}
-      <div className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold">
-          Hi, I am <span className="text-[#C6F67E]">Sabeh</span> Shaikh
-          <br /> From Pakistan
-        </h1>
-        <p className="text-xl md:text-2xl mt-2">MERN Stack Developer</p>
-      </div>
-
-      {/* Welcome Message */}
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold">Welcome to My Portfolio</h2>
-        <p className="text-lg mt-2">
-          I specialize in creating responsive and dynamic web applications using
-          the MERN stack. Explore my skills and projects below!
+      <section className="text-center space-y-6">
+        <h1 className="text-4xl md:text-5xl font-bold">Sabeh Shaikh</h1>
+        <p className="text-xl text-muted-foreground">
+          Full Stack Developer | Problem Solver | Tech Enthusiast
         </p>
-      </div>
+        <div className="flex justify-center space-x-4">
+          <Button asChild>
+            <a href="/images/SabehShaikhUpdatedResume.pdf" target="_blank">
+              Download Resume
+            </a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="/contact">Contact Me</a>
+          </Button>
+        </div>
+      </section>
 
       {/* Skills Section */}
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold">What I Do</h2>
-        <ul className="list-disc list-inside mt-2 space-y-1 text-lg">
-          <li>MERN Stack Development</li>
-          <li>Responsive Web Design</li>
-          <li>UI/UX Design</li>
-          <li>Database Management</li>
-        </ul>
-      </div>
+      <section className="grid md:grid-cols-3 gap-6">
+        <SkillCard icon={Code} title="Frontend" skills={skills.frontend} />
+        <SkillCard icon={Server} title="Backend" skills={skills.backend} />
+        <SkillCard icon={Database} title="Tools" skills={skills.tools} />
+      </section>
 
-      {/* Call to Action */}
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold mb-2">Let's Work Together!</h2>
-        <Link
-          href="/contact"
-          className=" text-[#C6F67E] hover:text-[#9fcc67]  underline transition"
-        >
-          Get in touch!
-        </Link>
-      </div>
-
-      {/* Social Links */}
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold">Connect with Me</h2>
-        <p className="text-lg mt-2">
-          Follow me on:
-          <a
-            href="https://www.linkedin.com/in/sabeh-shaikh/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#C6F67E] hover:text-[#9fcc67] underline ml-1 transition"
-          >
-            LinkedIn
-          </a>
-          ,
-          <a
-            href="https://github.com/SabehShaikh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#C6F67E] hover:text-[#9fcc67] underline ml-1 transition"
-          >
-            GitHub
-          </a>
-        </p>
-      </div>
+      {/* Contact Section */}
+      <section id="contact" className="text-center space-y-6">
+        <h2 className="text-3xl font-semibold">Get in Touch</h2>
+        <div className="flex justify-center space-x-6">
+          <Button variant="outline" size="icon" asChild>
+            <a href="https://github.com/SabehShaikh" target="_blank">
+              <Github />
+            </a>
+          </Button>
+          <Button variant="outline" size="icon" asChild>
+            <a href="https://www.linkedin.com/in/sabeh-shaikh/" target="_blank">
+              <Linkedin />
+            </a>
+          </Button>
+          <Button variant="outline" size="icon" asChild>
+            <a href="mailto:sabehshaikh201@gmail.com">
+              <Mail />
+            </a>
+          </Button>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default HomePage;

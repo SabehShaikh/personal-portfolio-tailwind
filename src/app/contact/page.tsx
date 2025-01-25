@@ -1,98 +1,156 @@
-import React from "react";
-import {
-  FaPaperPlane,
-  // FaHeart,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaGithub,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import Link from "next/link";
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { 
+  FaPaperPlane, 
+  FaFacebookF, 
+  FaXTwitter, 
+  FaLinkedinIn, 
+  FaGithub 
+} from 'react-icons/fa6';
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle 
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { 
+  Tooltip, 
+  TooltipContent, 
+  TooltipProvider, 
+  TooltipTrigger 
+} from '@/components/ui/tooltip';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Add form submission logic here
+    console.log('Form submitted:', formData);
+  };
+
+  const socialLinks = [
+    {
+      icon: FaFacebookF,
+      href: "https://www.facebook.com/Sabeh420/",
+      label: "Facebook"
+    },
+    {
+      icon: FaXTwitter,
+      href: "https://twitter.com/shaikh_sabeh",
+      label: "Twitter"
+    },
+    {
+      icon: FaLinkedinIn,
+      href: "https://www.linkedin.com/in/sabeh-shaikh-016623245/",
+      label: "LinkedIn"
+    },
+    {
+      icon: FaGithub,
+      href: "https://github.com/SabehShaikh",
+      label: "GitHub"
+    }
+  ];
+
   return (
-    <div className="contact py-16">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row">
+    <div className="container mx-auto px-4 py-16">
+      <Card className="w-full max-w-5xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-3xl font-bold text-center">
+            Contact Me
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="grid md:grid-cols-2 gap-8">
           {/* Left Section */}
-          <div className="contact-left flex-1 lg:mr-8">
-            <h1 className="sub-title text-3xl font-bold mb-4">Contact Me</h1>
-            <p className="mt-8 text-lg">
-              <FaPaperPlane className="text-[#C6F67E] inline mr-4 text-2xl" />
-              sabehshaikh201@gmail.com
-            </p>
-            <div className="social-icons mt-8 flex">
-              <Link
-                href="https://www.facebook.com/Sabeh420/"
-                aria-label="Facebook"
-              >
-                <FaFacebookF className="text-gray-400 text-3xl mr-5 transition-transform transform hover:text-[#C6F67E] hover:translate-y-[-5px]" />
-              </Link>
-              <Link
-                href="https://twitter.com/shaikh_sabeh"
-                aria-label="Twitter"
-              >
-                <FaXTwitter className="text-gray-400 text-3xl mr-5 transition-transform transform hover:text-[#C6F67E] hover:translate-y-[-5px]" />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/sabeh-shaikh-016623245/"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedinIn className="text-gray-400 text-3xl mr-5 transition-transform transform hover:text-[#C6F67E] hover:translate-y-[-5px]" />
-              </Link>
-              <Link href="https://github.com/SabehShaikh" aria-label="GitHub">
-                <FaGithub className="text-gray-400 text-3xl mr-5 transition-transform transform hover:text-[#C6F67E] hover:translate-y-[-5px]" />
-              </Link>
+          <div className="space-y-6">
+            <div className="flex items-center text-lg">
+              <FaPaperPlane className="text-emerald-400 mr-4 text-2xl" />
+              <span>sabehshaikh201@gmail.com</span>
             </div>
-            <Link
-              href="/Images/SabehShaikhUpdatedResume.pdf"
-              download
-              className="btn btn2 mt-6 inline-block bg-[#C6F67E] text-gray-800 py-2 px-4 rounded-lg hover:bg-[#A6D94D] transition"
+            
+            <TooltipProvider>
+              <div className="flex space-x-4">
+                {socialLinks.map(({ icon: Icon, href, label }) => (
+                  <Tooltip key={label}>
+                    <TooltipTrigger asChild>
+                      <Link 
+                        href={href} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-500 hover:text-emerald-400 transition-colors"
+                        aria-label={label}
+                      >
+                        <Icon className="text-3xl" />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>{label}</TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </TooltipProvider>
+
+            <Button 
+              asChild 
+              variant="outline" 
+              className="w-full md:w-auto"
             >
-              Download CV
-            </Link>
+              <Link 
+                href="/Images/SabehShaikhUpdatedResume.pdf" 
+                download
+              >
+                Download CV
+              </Link>
+            </Button>
           </div>
 
           {/* Right Section */}
-          <div className="flex-1">
-            <form name="submit-to-google-sheet" className="mt-4">
-              <input
-                type="text"
-                name="Name"
-                placeholder="Enter Your Name"
-                required
-                className="w-full border-0 outline-none bg-[#262626] text-white p-4 mb-4 rounded-lg"
-              />
-              <input
-                type="email"
-                name="Email"
-                placeholder="Enter Your Email"
-                required
-                className="w-full border-0 outline-none bg-[#262626] text-white p-4 mb-4 rounded-lg"
-              />
-              <textarea
-                name="Message"
-                rows={6}
-                placeholder="Your Message"
-                className="w-full border-0 outline-none bg-[#262626] text-white p-4 mb-4 rounded-lg"
-              />
-              <button
-                type="submit"
-                className="btn btn2 bg-[#C6F67E] text-gray-800 py-2 px-6 rounded-lg hover:bg-[#A6D94D] transition"
-              >
-                Submit
-              </button>
-            </form>
-            <span id="msg"></span>
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="copyright text-center py-4 bg-[#262626] mt-8">
-                <p className="text-gray-400 flex items-center justify-center">
-                    Copyright © Sabeh Shaikh <FaHeart className="text-[#C6F67E] ml-2" />
-                </p>
-            </div> */}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              name="name"
+              placeholder="Enter Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <Textarea
+              name="message"
+              placeholder="Your Message"
+              rows={6}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+            <Button type="submit" className="w-full">
+              Submit
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
