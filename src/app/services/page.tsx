@@ -1,7 +1,6 @@
 import { 
   Code, 
   Layers, 
-  Smartphone, 
   PenTool, 
   Server, 
   Monitor 

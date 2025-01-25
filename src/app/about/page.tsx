@@ -3,12 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Code, 
-  Briefcase, 
-  GraduationCap, 
-  Award, 
-  CheckCircle2 
+import {
+  Code,
+  Briefcase,
+  GraduationCap,
+  Award,
+  CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,56 +17,56 @@ export default function About() {
 
   const tabData = {
     skills: [
-      { 
-        icon: <Code className="text-primary mr-2" />, 
-        title: "UI/UX", 
-        description: "Designing Web/App interfaces" 
+      {
+        icon: <Code className="text-primary mr-2" />,
+        title: "UI/UX",
+        description: "Designing Web/App interfaces",
       },
-      { 
-        icon: <CheckCircle2 className="text-primary mr-2" />, 
-        title: "Front-End Development", 
-        description: "Web/App Development" 
+      {
+        icon: <CheckCircle2 className="text-primary mr-2" />,
+        title: "Front-End Development",
+        description: "Web/App Development",
       },
-      { 
-        icon: <Award className="text-primary mr-2" />, 
-        title: "Responsive Web Design", 
-        description: "Creating mobile-friendly websites" 
-      }
+      {
+        icon: <Award className="text-primary mr-2" />,
+        title: "Responsive Web Design",
+        description: "Creating mobile-friendly websites",
+      },
     ],
     experience: [
       {
         title: "Web Developer Intern",
         company: "Saylani Mass IT Training",
-        period: "Aug 2023 - Dec 2023"
+        period: "Aug 2023 - Dec 2023",
       },
       {
         title: "Remote Web/App Developer Intern",
         company: "CodeSoft",
-        period: "Sept - Oct 2023"
+        period: "Sept - Oct 2023",
       },
       {
         title: "Remote Web Developer Intern",
         company: "TechnoHacks",
-        period: "Oct 2023"
-      }
+        period: "Oct 2023",
+      },
     ],
     education: [
       {
         title: "Bachelor of Computer Science (BSCS)",
         institution: "Federal Urdu University",
-        period: "2023 - Present"
+        period: "2023 - Present",
       },
       {
         title: "Generative AI Engineer",
         institution: "Governor Sindh Initiative",
-        period: "Feb 2024 - Present"
+        period: "Feb 2024 - Present",
       },
       {
         title: "MERN Stack Web Development",
         institution: "Saylani Mass IT Training",
-        period: "Jan 2023 - Dec 2023"
-      }
-    ]
+        period: "Jan 2023 - Dec 2023",
+      },
+    ],
   };
 
   return (
@@ -85,23 +85,43 @@ export default function About() {
 
         {/* About Content */}
         <div>
-          <h1 className="text-4xl text-center md:text-left font-bold mb-6">About Me</h1>
+          <h1 className="text-4xl text-center md:text-left font-bold mb-6">
+            About Me
+          </h1>
           <p className="text-muted-foreground mb-8">
-            Dedicated MERN Stack Developer passionate about creating user-centric 
-            and visually captivating websites. Proficient in HTML, CSS, and JavaScript, 
-            with a strong focus on React JS and full-stack development. Currently 
-            expanding expertise in Generative AI and TypeScript.
+            Dedicated MERN Stack Developer passionate about creating
+            user-centric and visually captivating websites. Proficient in HTML,
+            CSS, and JavaScript, with a strong focus on React JS and full-stack
+            development. Currently expanding expertise in Generative AI and
+            TypeScript.
           </p>
 
-          <Tabs 
-            defaultValue="skills" 
+          {/* Tabs */}
+
+          <Tabs
+            defaultValue="skills"
             className="w-full"
             onValueChange={setActiveTab}
           >
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="skills">Skills</TabsTrigger>
-              <TabsTrigger value="experience">Experience</TabsTrigger>
-              <TabsTrigger value="education">Education</TabsTrigger>
+              <TabsTrigger
+                value="skills"
+                className={activeTab === "skills" ? "bg-primary" : ""}
+              >
+                Skills
+              </TabsTrigger>
+              <TabsTrigger
+                value="experience"
+                className={activeTab === "experience" ? "bg-primary" : ""}
+              >
+                Experience
+              </TabsTrigger>
+              <TabsTrigger
+                value="education"
+                className={activeTab === "education" ? "bg-primary" : ""}
+              >
+                Education
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="skills">
@@ -113,7 +133,9 @@ export default function About() {
                       <CardTitle>{skill.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">{skill.description}</p>
+                      <p className="text-muted-foreground">
+                        {skill.description}
+                      </p>
                     </CardContent>
                   </Card>
                 ))}
@@ -122,7 +144,10 @@ export default function About() {
 
             <TabsContent value="experience">
               {tabData.experience.map((exp, index) => (
-                <Card key={index} className="mb-4 hover:shadow-lg transition-all">
+                <Card
+                  key={index}
+                  className="mb-4 hover:shadow-lg transition-all"
+                >
                   <CardHeader>
                     <div className="flex justify-between items-center">
                       <div>
@@ -133,7 +158,9 @@ export default function About() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{exp.period}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {exp.period}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -141,18 +168,25 @@ export default function About() {
 
             <TabsContent value="education">
               {tabData.education.map((edu, index) => (
-                <Card key={index} className="mb-4 hover:shadow-lg transition-all">
+                <Card
+                  key={index}
+                  className="mb-4 hover:shadow-lg transition-all"
+                >
                   <CardHeader>
                     <div className="flex justify-between items-center">
                       <div>
                         <CardTitle>{edu.title}</CardTitle>
-                        <p className="text-muted-foreground">{edu.institution}</p>
+                        <p className="text-muted-foreground">
+                          {edu.institution}
+                        </p>
                       </div>
                       <GraduationCap className="text-primary" />
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{edu.period}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {edu.period}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -161,7 +195,9 @@ export default function About() {
 
           <div className="mt-8 flex space-x-4">
             <Button>
-              <a href="/images/SabehShaikhUpdatedResume.pdf" target="_blank">Download Resume</a>
+              <a href="/images/SabehShaikhUpdatedResume.pdf" target="_blank">
+                Download Resume
+              </a>
             </Button>
             <Button variant="outline">
               <a href="/contact">Contact Me</a>
