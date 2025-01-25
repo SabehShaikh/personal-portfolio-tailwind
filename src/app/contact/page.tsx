@@ -42,7 +42,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form submission logic here
+
     console.log('Form submitted:', formData);
   };
 
@@ -112,7 +112,8 @@ export default function Contact() {
               className="w-full md:w-auto"
             >
               <Link 
-                href="/Images/SabehShaikhUpdatedResume.pdf" 
+                href="/images/SabehShaikhUpdatedResume.pdf" 
+                
                 download
               >
                 Download CV
@@ -144,6 +145,7 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               required
+              className="resize-none"
             />
             <Button type="submit" className="w-full">
               Submit
