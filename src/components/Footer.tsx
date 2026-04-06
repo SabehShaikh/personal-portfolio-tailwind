@@ -18,7 +18,7 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: FaLinkedinIn,
-      href: "https://www.linkedin.com/in/sabeh-shaikh-016623245/",
+      href: "https://www.linkedin.com/in/sabeh-shaikh/",
       label: "LinkedIn",
     },
     {
@@ -39,11 +39,11 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/portfolio", label: "Portfolio" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -62,7 +62,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-gray-400 text-center md:text-left">
-              Transforming ideas into elegant digital solutions.
+              Building fast, responsive, and intelligent web experiences.
             </p>
           </div>
 

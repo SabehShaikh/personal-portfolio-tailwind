@@ -7,8 +7,10 @@ import {
   Code,
   Briefcase,
   GraduationCap,
-  Award,
-  CheckCircle2,
+  Cpu,
+  Layout,
+  Server,
+  Smartphone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -18,19 +20,29 @@ export default function About() {
   const tabData = {
     skills: [
       {
-        icon: <Code className="text-primary mr-2" />,
-        title: "UI/UX",
-        description: "Designing Web/App interfaces",
+        icon: <Layout className="text-primary mr-2 w-5 h-5" />,
+        title: "Frontend Development",
+        description: "React.js, Next.js, Tailwind CSS, TypeScript",
       },
       {
-        icon: <CheckCircle2 className="text-primary mr-2" />,
-        title: "Front-End Development",
-        description: "Web/App Development",
+        icon: <Server className="text-primary mr-2 w-5 h-5" />,
+        title: "Backend Development",
+        description: "Node.js, Express, FastAPI, PostgreSQL, MongoDB",
       },
       {
-        icon: <Award className="text-primary mr-2" />,
-        title: "Responsive Web Design",
-        description: "Creating mobile-friendly websites",
+        icon: <Cpu className="text-primary mr-2 w-5 h-5" />,
+        title: "AI & Generative AI",
+        description: "RAG pipelines, LLM integration, Groq, Qdrant, Gemini APIs",
+      },
+      {
+        icon: <Smartphone className="text-primary mr-2 w-5 h-5" />,
+        title: "Responsive & UI Design",
+        description: "Mobile-first design, component-driven UI, clean UX",
+      },
+      {
+        icon: <Code className="text-primary mr-2 w-5 h-5" />,
+        title: "Dev Tools & Deployment",
+        description: "Git, Vercel, Docker, Postman, Cloudinary",
       },
     ],
     experience: [
@@ -75,11 +87,11 @@ export default function About() {
         {/* Profile Image */}
         <div className="flex justify-center md:justify-start">
           <Image
-            src="/images/mypic.jpg"
+            src="/images/my_pic.png"
             alt="Sabeh Shaikh"
             width={400}
             height={400}
-            className="rounded-full object-cover w-64 h-64 md:w-80 md:h-80 shadow-lg"
+            className="rounded-full object-contain w-64 h-64 md:w-80 md:h-80 shadow-lg"
           />
         </div>
 
@@ -88,16 +100,18 @@ export default function About() {
           <h1 className="text-4xl text-center md:text-left font-bold mb-6">
             About Me
           </h1>
-          <p className="text-muted-foreground mb-8">
-            Dedicated MERN Stack Developer passionate about creating
-            user-centric and visually captivating websites. Proficient in HTML,
-            CSS, and JavaScript, with a strong focus on React JS and full-stack
-            development. Currently expanding expertise in Generative AI and
-            TypeScript.
+          <p className="text-muted-foreground mb-8 leading-relaxed">
+            I&apos;m a Computer Science student at Federal Urdu University,
+            Karachi, with hands-on experience in full stack web development and
+            a growing focus on AI integration. I&apos;ve built and deployed
+            real-world projects — from e-commerce platforms to RAG-powered
+            chatbots — and I&apos;m comfortable working across the stack, from
+            Next.js frontends to FastAPI backends. Currently deepening my skills
+            in Generative AI through the Governor Sindh Initiative and applying
+            them in practical, shipped projects.
           </p>
 
           {/* Tabs */}
-
           <Tabs
             defaultValue="skills"
             className="w-full"
@@ -128,12 +142,14 @@ export default function About() {
               <div className="grid md:grid-cols-2 gap-4">
                 {tabData.skills.map((skill, index) => (
                   <Card key={index} className="hover:shadow-lg transition-all">
-                    <CardHeader className="flex flex-row items-center space-x-4">
+                    <CardHeader className="flex flex-row items-center space-x-2 pb-2">
                       {skill.icon}
-                      <CardTitle>{skill.title}</CardTitle>
+                      <CardTitle className="text-sm font-semibold">
+                        {skill.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {skill.description}
                       </p>
                     </CardContent>
@@ -151,16 +167,16 @@ export default function About() {
                   <CardHeader>
                     <div className="flex justify-between items-center">
                       <div>
-                        <CardTitle>{exp.title}</CardTitle>
-                        <p className="text-muted-foreground">{exp.company}</p>
+                        <CardTitle className="text-base">{exp.title}</CardTitle>
+                        <p className="text-muted-foreground text-sm">
+                          {exp.company}
+                        </p>
                       </div>
-                      <Briefcase className="text-primary" />
+                      <Briefcase className="text-primary w-5 h-5 shrink-0" />
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      {exp.period}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{exp.period}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -175,18 +191,16 @@ export default function About() {
                   <CardHeader>
                     <div className="flex justify-between items-center">
                       <div>
-                        <CardTitle>{edu.title}</CardTitle>
-                        <p className="text-muted-foreground">
+                        <CardTitle className="text-base">{edu.title}</CardTitle>
+                        <p className="text-muted-foreground text-sm">
                           {edu.institution}
                         </p>
                       </div>
-                      <GraduationCap className="text-primary" />
+                      <GraduationCap className="text-primary w-5 h-5 shrink-0" />
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      {edu.period}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{edu.period}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -194,12 +208,12 @@ export default function About() {
           </Tabs>
 
           <div className="mt-8 flex space-x-4">
-            <Button>
-              <a href="/images/SabehShaikhUpdatedResume.pdf" target="_blank">
+            <Button asChild>
+              <a href="/images/SabehShaikhResume.pdf" target="_blank">
                 Download Resume
               </a>
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" asChild>
               <a href="/contact">Contact Me</a>
             </Button>
           </div>

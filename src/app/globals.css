@@ -2,26 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-nav ul li span {
-  display: block;
-  height: 3px; /* Height of the underline */
-  background: #c6f67e; /* Color of the underline */
-  width: 0; /* Initially hidden */
-  transition: width 0.3s ease-in-out; /* Smooth transition */
-}
-
-nav ul li:hover span {
-  width: 100%; /* Show underline on hover */
 }
 
 @layer base {
@@ -86,5 +70,6 @@ nav ul li:hover span {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 }

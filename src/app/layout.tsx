@@ -11,8 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sabeh Shaikh Portfolio",
-  description: "A basic portfolio application.",
+  title: "Sabeh Shaikh | Full Stack Developer & AI Enthusiast",
+  description:
+    "Portfolio of Sabeh Shaikh — Full Stack Developer and AI Enthusiast based in Karachi. Building fast, responsive, and intelligent web experiences with Next.js, FastAPI, and modern AI tools.",
 };
 
 export default function RootLayout({
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.variable}>
         <Header />
         {children}
         <Footer />
